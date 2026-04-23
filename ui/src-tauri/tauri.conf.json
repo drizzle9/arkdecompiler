@@ -1,0 +1,57 @@
+{
+  "productName": "arkdecompiler",
+  "version": "0.1.0",
+  "identifier": "com.arkdecompiler.app",
+  "build": {
+    "beforeBuildCommand": "npm run build:web",
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../target/dist",
+    "beforeBuildCommand": "npm run build:web && echo Build completed"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "title": "arkdecompiler",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 1024,
+        "minHeight": 768,
+        "resizable": true,
+        "fullscreen": false,
+        "center": true,
+        "decorations": true,
+        "transparent": false,
+        "backgroundColor": "#1e1e1e"
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "category": "DeveloperTool",
+    "copyright": "",
+    "externalBin": [],
+    "icon": [
+      "../src-common/icons/icon.ico",
+      "../src-common/icons/icon.icns",
+      "../src-common/icons/icon.png"
+    ],
+    "longDescription": "A cross-platform decompiler GUI application for reverse engineering",
+    "shortDescription": "arkdecompiler",
+    "targets": [
+      "nsis"
+    ],
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": "",
+      "nsis": {
+        "installerIcon": "../src-common/icons/icon.ico"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "arkDisasm": {
+    "linux": "/home/harmonyos/out/x64.release/arkcompiler/runtime_core/ark_disasm",
+    "win32": "D:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\toolchains\\ark_disasm.exe",
+    "darwin": ""
+  },
+  "arkDecompile": {
+    "linux": "LD_LIBRARY_PATH=/home/harmonyos/arkdecompiler/out/arkcompiler/runtime_core:/home/harmonyos/arkdecompiler/out/thirdparty/zlib  /home/harmonyos/arkdecompiler/out/arkcompiler/common/xabc",
+    "win32": "",
+    "darwin": ""
+  },
+  "workspaceRoot": ""
+}

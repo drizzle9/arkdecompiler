@@ -1,0 +1,5 @@
+[build]
+target-dir = "target/tauri"
+
+[env]
+TAURI_OUTPUT_DIRECTORY = "target/tauri/gen"

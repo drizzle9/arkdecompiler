@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="./src-common/icons/icon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arkdecompiler</title>
+    <style>
+      html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background: #1e1e1e;
+        color: #d0d0d0;
+        overflow: hidden;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+      }
+      .boot-screen {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .boot-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #4e9eff;
+        animation: pulse 1.2s infinite ease-in-out;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.3; transform: scale(0.85); }
+        50% { opacity: 1; transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot-screen">
+        <div class="boot-dot"></div>
+        <div>Starting arkdecompiler...</div>
+      </div>
+    </div>
+    <script type="module" src="/src-common/main.tsx"></script>
+  </body>
+</html>

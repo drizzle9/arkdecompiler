@@ -8,7 +8,7 @@ bool FunDepScan::RunImpl(){
     size_t aliveblockcount = GetGraph()->GetAliveBlocksCount();
     std::cout << "blockcount: " << blockcount << " , aliveblockcount: " << aliveblockcount << " , ratio: " << 1.0*aliveblockcount/blockcount << std::endl;
 
-    if(blockcount == 0 || (1.0 * aliveblockcount / blockcount) <= 0.8){ 
+    if(blockcount == 0 || (1.0 * aliveblockcount / blockcount) <= 0.7){ 
         return false;
     }
     //std::cout << "[-] @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;

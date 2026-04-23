@@ -755,6 +755,7 @@ void AstGen::VisitIntrinsic(GraphVisitor *visitor, Inst *inst_base)
 void AstGen::VisitCatchPhi(GraphVisitor *visitor, Inst *inst)
 {
     std::cout << "[+] VisitCatchPhi  >>>>>>>>>>>>>>>>>" << std::endl;
+    HandleError("haha");
     // The Acc register stores the exception object.
     // Create an STA instruction if the exception is used later in virtual registers.
     

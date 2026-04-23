@@ -1,0 +1,107 @@
+{
+  "name": "arkdecompiler",
+  "version": "0.1.0",
+  "description": "A cross-platform decompiler GUI",
+  "main": "src-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "web:quick": "vite --host",
+    "start": "npm run electron:dev",
+    "build:web": "vite build",
+    "deps:install:unix": "bash ./install-deps.sh",
+    "quick:test": "bash ./quick-test.sh",
+    "quick:test:web": "bash ./quick-test.sh web",
+    "quick:test:electron": "bash ./quick-test.sh electron",
+    "quick:test:tauri": "bash ./quick-test.sh tauri",
+    "electron:dev": "electron .",
+    "electron:build": "npm run build:web && electron-builder",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build && node -e \"const fs=require('fs');const src='src-tauri/gen';const dst='target/tauri/gen';if(fs.existsSync(src)){fs.mkdirSync(dst,{recursive:true});fs.cpSync(src,dst,{recursive:true});fs.rmSync(src,{recursive:true,force:true});}\""
+  },
+  "author": "arkdecompiler",
+  "license": "Apache-2.0",
+  "build": {
+    "appId": "com.arkdecompiler.app",
+    "productName": "arkdecompiler",
+    "directories": {
+      "output": "target/electron",
+      "buildResources": "src-common/icons"
+    },
+    "files": [
+      "src-electron/main.js",
+      "src-electron/preload.js",
+      "target/dist/**/*",
+      "src-common/icons/**/*",
+      "tools.json"
+    ],
+    "icon": "icon.png",
+    "extraResources": [
+      {
+        "from": "src-common/icons/icon.ico",
+        "to": "icon.ico"
+      },
+      {
+        "from": "src-common/icons/icon.png",
+        "to": "icon.png"
+      }
+    ],
+    "win": {
+      "icon": "icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "icon.png"
+    },
+    "mac": {
+      "icon": "icon.icns"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "arkdecompiler",
+      "installerLanguages": [
+        "en_US"
+      ],
+      "displayLanguageSelector": false,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "installerHeaderIcon": "icon.ico"
+    },
+    "portable": {
+      "artifactName": "arkdecompiler-portable.exe"
+    }
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-resizable-panels": "^2.1.7",
+    "react-syntax-highlighter": "^16.1.1",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  }
+}

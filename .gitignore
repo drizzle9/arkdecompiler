@@ -29,3 +29,22 @@ autotests/history/*
 *.swp
 
 !tests/*.ts
+
+# dependencies
+ui/node_modules/
+ui/target/
+
+# logs
+ui/npm-debug.log*
+ui/yarn-debug.log*
+ui/yarn-error.log*
+ui/pnpm-debug.log*
+
+# OS / IDE
+ui/.DS_Store
+ui/Thumbs.db
+ui/.idea/
+ui/.vscode/
+
+
+ui/src-tauri/gen/
