@@ -16,7 +16,7 @@ arkdecompiler is the decompiler for HarmonyOS NEXT(纯血鸿蒙反编译器), wh
 
 
 # Cross-platform GUI
->Decompilation is currently Windows-only, while disassembly is supported across all platforms. Please configure your environment's command-line tools before use; you may refer to the default parameters as a guide.
+>Decompilation is currently Linux-only, while disassembly is supported across all platforms. Please configure your environment's command-line tools before use; you may refer to the default parameters as a guide.
 
 📦 **Download**: Get the latest pre-compiled binaries for your platform from [GitHub Releases](../../releases/latest)
 
