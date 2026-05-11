@@ -27,7 +27,7 @@ arkdecompiler is the decompiler for HarmonyOS NEXT(纯血鸿蒙反编译器), wh
 ## Tested platform
 Ubuntu 22.04
 
-In the future we will adapt to other development platforms such as (Windows, macOS) and add a GUI.
+In the future we will adapt to other development platforms such as (Windows, macOS).
 ## Prepare environment
 ```bash
 ./prepare.sh(It will create the root directory **harmonyos**)
