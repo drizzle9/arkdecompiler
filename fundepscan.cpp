@@ -2,16 +2,34 @@
 
 namespace panda::bytecodeopt {
 
-bool FunDepScan::RunImpl(){
-    //std::cout << "[+] @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
-    size_t blockcount = GetGraph()->GetVectorBlocks().size();
-    size_t aliveblockcount = GetGraph()->GetAliveBlocksCount();
-    std::cout << "blockcount: " << blockcount << " , aliveblockcount: " << aliveblockcount << " , ratio: " << 1.0*aliveblockcount/blockcount << std::endl;
+bool FunDepScan::HasBrokenCfgEdges() {
+    auto* graph = GetGraph();
+    const auto& rpo_blocks = graph->GetBlocksRPO();
 
-    if(blockcount == 0 || (1.0 * aliveblockcount / blockcount) <= 0.7){ 
+    std::set<uint32_t> reachable_ids;
+    for (auto* bb : rpo_blocks) {
+        reachable_ids.insert(bb->GetId());
+    }
+
+    for (auto* bb : graph->GetVectorBlocks()) {
+        if (bb == nullptr) continue;
+        if (reachable_ids.count(bb->GetId())) continue;
+        for (auto* succ : bb->GetSuccsBlocks()) {
+            if (reachable_ids.count(succ->GetId())) {
+                std::cout << "HasBrokenCfgEdges: unreachable block " << bb->GetId()
+                          << " has successor " << succ->GetId() << " in reachable set" << std::endl;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool FunDepScan::RunImpl(){
+    if (GetGraph()->GetAliveBlocksCount() == 0 || HasBrokenCfgEdges()) {
         return false;
     }
-    //std::cout << "[-] @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
+
     for (auto *bb : GetGraph()->GetBlocksLinearOrder()) {
         for (const auto &inst : bb->AllInsts()) {
             VisitInstruction(inst);
@@ -20,6 +38,8 @@ bool FunDepScan::RunImpl(){
 
     return true;
 }
+
+
 
 void FunDepScan::VisitIntrinsic(GraphVisitor *visitor, Inst *inst_base)
 {

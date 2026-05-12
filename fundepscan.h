@@ -41,6 +41,7 @@ public:
 
     ~FunDepScan() override = default;
     bool RunImpl() override;
+    bool HasBrokenCfgEdges();
 
     const char *GetPassName() const override
     {

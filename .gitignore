@@ -1,5 +1,6 @@
 base.map
 a
+.claude/
 
 scripts/*.ir
 scripts/out/*
